@@ -24,7 +24,7 @@ class Appbar extends StatelessWidget {
             children: [
               if (logo)
                 Padding(
-                  padding: const EdgeInsets.only(top: 5, bottom: 16),
+                  padding: const EdgeInsets.only(top: 15, bottom: 16),
                   child: Image.asset(
                     "assets/images/logo.png",
                     width: 200,
