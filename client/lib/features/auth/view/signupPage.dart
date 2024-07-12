@@ -1,5 +1,7 @@
 import 'package:client/features/auth/textformfield.dart';
+import 'package:client/features/auth/view/loginPage.dart';
 import 'package:client/widgets/appbar.dart';
+import 'package:client/widgets/commonbutton.dart';
 import 'package:flutter/material.dart';
 
 class SignupPage extends StatelessWidget {
@@ -7,27 +9,25 @@ class SignupPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size.width;
     return Scaffold(
-      body: SafeArea(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const Appbar(
-              logo: true,
-              filter: false,
-              search: false,
-            ),
-            Expanded(
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const Appbar(logo: true, search: false, filter: false),
+          Expanded(
+            child: SingleChildScrollView(
               child: Column(
                 children: [
                   const SizedBox(
                     height: 50,
                   ),
-                  const Padding(
-                    padding: EdgeInsets.only(left: 16),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 16),
                     child: Align(
-                      alignment: Alignment.centerLeft,
-                      child: Text(
+                      alignment:
+                          size > 1080 ? Alignment.center : Alignment.centerLeft,
+                      child: const Text(
                         "Sign Up",
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
@@ -83,23 +83,9 @@ class SignupPage extends StatelessWidget {
                   const SizedBox(
                     height: 20,
                   ),
-                  Padding(
-                    padding: const EdgeInsets.all(16.0),
-                    child: ElevatedButton(
-                      onPressed: () {},
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Theme.of(context).colorScheme.primary,
-                        minimumSize: const Size(double.infinity, 50),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                      ),
-                      child: const Text(
-                        "Sign Up",
-                        style: TextStyle(color: Colors.white),
-                      ),
-                    ),
-                  ),
+                  const Padding(
+                      padding: EdgeInsets.all(16.0),
+                      child: CommonButton(text: "Sign Up")),
                   const SizedBox(
                     height: 20,
                   ),
@@ -112,7 +98,13 @@ class SignupPage extends StatelessWidget {
                             color: Theme.of(context).colorScheme.primary),
                       ),
                       TextButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const Loginpage()),
+                          );
+                        },
                         child: const Text(
                           "Sign In",
                           style: TextStyle(
@@ -124,8 +116,8 @@ class SignupPage extends StatelessWidget {
                 ],
               ),
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

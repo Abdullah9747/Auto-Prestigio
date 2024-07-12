@@ -16,20 +16,24 @@ class textformfield extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size.width;
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 16)
           .copyWith(top: 0),
-      child: TextFormField(
-        obscureText: check,
-        decoration: InputDecoration(
-          labelText: labeltext,
-          hintText: hintText,
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(10),
-          ),
-          prefixIcon: Padding(
-            padding: const EdgeInsets.only(left: 8),
-            child: Image.asset(icon),
+      child: SizedBox(
+        width: size > 1080 ? (size * 0.35) : double.infinity,
+        child: TextFormField(
+          obscureText: check,
+          decoration: InputDecoration(
+            labelText: labeltext,
+            hintText: hintText,
+            border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(10),
+            ),
+            prefixIcon: Padding(
+              padding: const EdgeInsets.only(left: 8),
+              child: Image.asset(icon),
+            ),
           ),
         ),
       ),

@@ -1,6 +1,8 @@
 // ignore_for_file: file_names
 import 'package:client/features/auth/textformfield.dart';
+import 'package:client/features/auth/view/signupPage.dart';
 import 'package:client/widgets/appbar.dart';
+import 'package:client/widgets/commonbutton.dart';
 import 'package:flutter/material.dart';
 
 class Loginpage extends StatelessWidget {
@@ -54,7 +56,8 @@ class Loginpage extends StatelessWidget {
                     check: true,
                   ),
                   Align(
-                    alignment: Alignment.centerRight,
+                    alignment:
+                        size > 1080 ? Alignment.center : Alignment.centerRight,
                     child: Padding(
                       padding: const EdgeInsets.only(right: 16),
                       child: TextButton(
@@ -66,22 +69,9 @@ class Loginpage extends StatelessWidget {
                   const SizedBox(
                     height: 20,
                   ),
-                  Padding(
-                    padding: const EdgeInsets.all(16.0),
-                    child: ElevatedButton(
-                      onPressed: () {},
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Theme.of(context).colorScheme.primary,
-                        minimumSize: Size((size * .8), 50),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                      ),
-                      child: const Text(
-                        "Sign In",
-                        style: TextStyle(color: Colors.white),
-                      ),
-                    ),
+                  const Padding(
+                    padding: EdgeInsets.all(16.0),
+                    child: CommonButton(text: "Sign In"),
                   ),
                   const SizedBox(
                     height: 20,
@@ -89,8 +79,8 @@ class Loginpage extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.all(16.0),
                     child: SizedBox(
-                      width: size * .60,
-                      height: 60,
+                      width: size > 1080 ? size * 0.25 : size * .60,
+                      height: 50,
                       child: ElevatedButton(
                         onPressed: () {},
                         style: ElevatedButton.styleFrom(
@@ -98,6 +88,7 @@ class Loginpage extends StatelessWidget {
                           borderRadius: BorderRadius.circular(10),
                         )),
                         child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Image.asset(
                               'assets/images/google.png',
@@ -118,7 +109,13 @@ class Loginpage extends StatelessWidget {
                             color: Theme.of(context).colorScheme.primary),
                       ),
                       TextButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const SignupPage()),
+                          );
+                        },
                         child: const Text(
                           "Sign Up",
                           style: TextStyle(
