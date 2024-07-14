@@ -70,8 +70,8 @@ class _SignupPageState extends State<SignupPage> {
                         if (value == null || value.isEmpty) {
                           return 'Please enter your name';
                         }
-                        if (!RegExp(r'^[a-zA-Z0-9]+$').hasMatch(value)) {
-                          return 'Name can only contain alphanumeric characters';
+                        if (!RegExp(r'^[a-zA-Z0-9_.-]+$').hasMatch(value)) {
+                          return 'Name can only contain alphanumeric characters, underscore, dot, and hyphen';
                         }
                         if (RegExp(r'^[0-9]').hasMatch(value)) {
                           return 'Name cannot start with a numeric character';
