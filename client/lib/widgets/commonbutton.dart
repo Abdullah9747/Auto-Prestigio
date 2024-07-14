@@ -2,13 +2,14 @@ import 'package:flutter/material.dart';
 
 class CommonButton extends StatelessWidget {
   final String text;
-  const CommonButton({super.key, required this.text});
+  final VoidCallback onPressed;
+  const CommonButton({super.key, required this.text, required this.onPressed});
 
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size.width;
     return ElevatedButton(
-      onPressed: () {},
+      onPressed: onPressed,
       style: ElevatedButton.styleFrom(
         backgroundColor: Theme.of(context).colorScheme.primary,
         minimumSize:

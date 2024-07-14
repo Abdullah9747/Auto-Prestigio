@@ -6,12 +6,16 @@ class textformfield extends StatelessWidget {
   final String hintText;
   final String icon;
   final bool check;
+  final TextEditingController controller;
+  final FormFieldValidator<String>? validator;
   const textformfield({
     super.key,
     required this.labeltext,
     required this.hintText,
     required this.icon,
     this.check = false,
+    required this.controller,
+    this.validator,
   });
 
   @override
@@ -23,8 +27,11 @@ class textformfield extends StatelessWidget {
       child: SizedBox(
         width: size > 1080 ? (size * 0.35) : double.infinity,
         child: TextFormField(
+          validator: validator,
+          controller: controller,
           obscureText: check,
           decoration: InputDecoration(
+            errorMaxLines: 20,
             labelText: labeltext,
             hintText: hintText,
             border: OutlineInputBorder(
