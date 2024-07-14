@@ -1,5 +1,4 @@
 import 'package:client/features/auth/view/LoginPage.dart';
-import 'package:client/features/auth/view/signupPage.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -13,7 +12,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Auto Pristigio',
-      home: Loginpage(),
+      home: const Loginpage(),
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(
